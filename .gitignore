@@ -10,3 +10,4 @@ venv
 # Fetched from upstream
 tests/conftest.py
 .sentry-requirements.txt
+.sentry-requirements.testable.txt
