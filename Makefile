@@ -8,9 +8,9 @@
 # our own namespace here.
 deps:
 	git submodule update --init
-	cd deps/sentry && uv export --format requirements.txt --output-file ../../.sentry-requirements.txt --no-editable --no-hashes --no-emit-project
-	uv pip install -r .sentry-requirements.txt
-	uv run python -c "import sysconfig, pathlib; pathlib.Path(sysconfig.get_path('purelib'), 'sentry.pth').write_text('$(shell pwd)/deps/sentry/src\n')"
+	uv export --directory deps/sentry --format requirements-txt --no-editable --no-hashes --no-emit-project > .sentry-requirements.txt
+	uv pip install --python .venv/bin/python -r .sentry-requirements.txt
+	uv run --python .venv/bin/python python -c "import sysconfig, pathlib; pathlib.Path(sysconfig.get_path('purelib'), 'sentry.pth').write_text('$(shell pwd)/deps/sentry/src\n')"
 	cp -f deps/sentry/tests/conftest.py tests/conftest.py
 
 clean:
