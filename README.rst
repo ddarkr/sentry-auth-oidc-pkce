@@ -40,6 +40,8 @@ Finally, obtain the API keys and the well-known account URL and plug them into y
 
     OIDC_SCOPE = "openid email"
 
+    OIDC_PKCE_ENABLED = False  # Set to True to use PKCE with S256
+
     OIDC_DOMAIN = "https://accounts.google.com"  # e.g. for Google
 
 The ``OIDC_DOMAIN`` defines where the OIDC configuration is going to be pulled from.
@@ -49,6 +51,8 @@ That's where different endpoint paths can be found.
 Detailed information can be found in the `ProviderConfig <https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig>`_ specification.
 
 You can also define ``OIDC_ISSUER`` to change the default provider name in the UI, even when the ``OIDC_DOMAIN`` is set.
+
+Set ``OIDC_PKCE_ENABLED = True`` to enable PKCE using the ``S256`` code challenge method. Leave it disabled to preserve OAuth 2.0 compatibility with providers that do not support PKCE.
 
 If your provider doesn't support the ``OIDC_DOMAIN``, then you have to set these
 required endpoints by yourself (autorization_endpoint, token_endpoint, userinfo_endpoint, issuer).
