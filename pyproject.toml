@@ -1,5 +1,5 @@
 [project]
-name = "sentry-auth-oidc"
+name = "doda-sentry-auth-oidc"
 version = "9.1.0"
 description = "OpenID Connect authentication provider for Sentry"
 authors = [
